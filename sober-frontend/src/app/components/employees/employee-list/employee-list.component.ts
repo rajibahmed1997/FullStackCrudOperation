@@ -9,18 +9,36 @@ import { EmployeesService } from 'src/app/services/employees.service';
 })
 export class EmployeeListComponent implements OnInit {
   pageTitle: string = "Employee List";
-  employees: Employee[] = [];
+  employees: Employee[] = [
+    {
+      Id:'24342sdfsd234',
+      Name:'one',
+      Email:'one@gmail.com',
+      Phone:2342342,
+      Salary:234234,
+      Department:'cse'
+    },
+    {
+      Id:'24342sdfsd234',
+      Name:'one',
+      Email:'one@gmail.com',
+      Phone:2342342,
+      Salary:234234,
+      Department:'cse'
+    },
+
+  ];
   constructor(private employeesService : EmployeesService) { }
 
   ngOnInit(): void {
     this.employeesService.getAllEmployees().subscribe({
       next: (employees) => {
-        console.log(employees);
+        this.employees = employees;
       },
       error: (response) => {
         console.log(response);
       }
-    })
+    });
   }
 
 }
