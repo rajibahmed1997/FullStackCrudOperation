@@ -10,37 +10,31 @@ export class EmployeeListComponent implements OnInit {
   pageTitle: string = "Employee List";
   employees: Employee[] = [
     {
-      id: '53453sdffs2342sdfsdsdf',
-      name: 'Rajib',
-      email: 'rajib@gmail.com',
-      phone: 242342,
-      salary: 60000,
-      department: 'CSE'
+      Id: '53453sdffs2342sdfsdsdf',
+      Name: 'Raju',
+      Email: 'raju@gmail.com',
+      Phone: 643534,
+      Salary: 60000,
+      Department: 'CSE'
     },
     {
-      id: '53453sdffsbc42sdfsdsdf',
-      name: 'Saidul',
-      email: 'saidul@gmail.com',
-      phone: 242342,
-      salary: 60000,
-      department: 'CSE'
+      Id: '53453sdf2s2342sdfsdsdf',
+      Name: 'Rajib',
+      Email: 'rajib@gmail.com',
+      Phone: 242342,
+      Salary: 60000,
+      Department: 'EEE'
     },
     {
-      id: '53453sdffssd42sdfsdsdf',
-      name: 'second',
-      email: 'second@gmail.com',
-      phone: 242342,
-      salary: 60000,
-      department: 'EEE'
+      Id: '53453sdffs3342sdfsdsdf',
+      Name: 'Saidul',
+      Email: 'saidul@gmail.com',
+      Phone: 2342342,
+      Salary: 60000,
+      Department: 'SWE'
     },
-    {
-      id: '53453sd32s2342sdfsdsdf',
-      name: 'Rajib',
-      email: 'rajib@gmail.com',
-      phone: 242342,
-      salary: 60000,
-      department: 'SWE'
-    }
+    
+
 
   ];
   constructor() { }
