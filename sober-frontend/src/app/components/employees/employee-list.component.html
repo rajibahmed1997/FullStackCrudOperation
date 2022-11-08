@@ -10,16 +10,25 @@
                 <th>Phone</th>
                 <th>Salary</th>
                 <th>Department</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let emp of employeeList" >
-                <td>{{emp.Id}}</td>
-                <td>{{emp.Name}}</td>
-                <td>{{emp.Email}}</td>
-                <td>{{emp.Phone}}</td>
-                <td>{{emp.Salary}}</td>
-                <td>{{emp.Department}}</td>
+                <td>{{emp.id}}</td>
+                <td>
+                    <a [routerLink]="['/employee','edit', emp.id]">
+                        {{emp.name}}
+                    </a>
+                </td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.department}}</td>
+                <td>
+                    <!-- <a [routerLink]="['/employee','edit', emp.id]">Edit</a> -->
+                    <button class="btn btn-outline-danger">Delete </button>
+                </td>
             </tr>
         </tbody>
     </table>
