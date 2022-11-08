@@ -66,5 +66,20 @@ namespace SoberBackend.Controllers
             await _soberBackendDbContext.SaveChangesAsync();
             return Ok(employee);
         }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteEmployee([FromRoute] Guid id)
+        {
+            var employee =
+                await _soberBackendDbContext.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            _soberBackendDbContext.Employees.Remove(employee);
+            await _soberBackendDbContext.SaveChangesAsync();
+            return Ok(employee);
+        }
     }
 }

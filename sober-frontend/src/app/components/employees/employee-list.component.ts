@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -27,7 +28,10 @@ export class EmployeeListComponent implements OnInit {
     //   Department:'cse'
     // },
   // ];
-  constructor(private employeesService : EmployeesService) { }
+  constructor(
+    private router: Router,
+    private employeesService : EmployeesService
+    ) { }
 
   ngOnInit(): void {
     this.employeesService.getAllEmployees().subscribe({
@@ -39,6 +43,14 @@ export class EmployeeListComponent implements OnInit {
         console.log(response);
       }
     });
+  }
+
+  deleteEmployee(id:string){
+    this.employeesService.deleteEmployee(id).subscribe({
+      next:(response) => {
+        this.router.navigate(['employee']);
+      }
+    })
   }
 
 }
