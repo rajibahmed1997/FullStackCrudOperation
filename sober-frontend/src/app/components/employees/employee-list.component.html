@@ -1,0 +1,27 @@
+<div class="container my-5">
+    <h1 class="mb-3">{{pageTitle}}</h1>
+
+    <table class="table" *ngIf="employeeList && employeeList.length" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employeeList" >
+                <td>{{emp.Id}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.Email}}</td>
+                <td>{{emp.Phone}}</td>
+                <td>{{emp.Salary}}</td>
+                <td>{{emp.Department}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!employeeList || employeeList.length <= 0">No Employees found!</p>
+</div>

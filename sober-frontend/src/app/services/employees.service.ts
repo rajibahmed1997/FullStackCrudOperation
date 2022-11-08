@@ -9,10 +9,15 @@ import { Employee } from '../models/employee.model';
 })
 export class EmployeesService {
 
-  baseApiUrl: string=environment.baseApiUrl;
+  baseUrl: string = environment.baseApiUrl;
 
   constructor(private http: HttpClient) { }
-  getAllEmployees() : Observable<Employee[]>{
-    return this.http.get<Employee[]>(this.baseApiUrl + '/api/Employees');
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.baseUrl + '/employees');
+  }
+
+  addEmployee(addEmployeeRequest: Employee): Observable<Employee>{
+    addEmployeeRequest.Id = '00000000-0000-0000-0000-000000000000';
+    return this.http.post<Employee>(this.baseUrl + '/employees', addEmployeeRequest);
   }
 }
