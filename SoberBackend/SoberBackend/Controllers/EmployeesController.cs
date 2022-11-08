@@ -46,5 +46,25 @@ namespace SoberBackend.Controllers
             }
             return Ok(employee);
         }
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateEmployee([FromRoute] Guid id, Employee updateEmployeeRequest)
+        {
+            var employee =
+                await _soberBackendDbContext.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            employee.Name = updateEmployeeRequest.Name;
+            employee.Email = updateEmployeeRequest.Email;
+            employee.Salary = updateEmployeeRequest.Salary;
+            employee.Phone = updateEmployeeRequest.Phone;
+            employee.Department = updateEmployeeRequest.Department;
+
+            await _soberBackendDbContext.SaveChangesAsync();
+            return Ok(employee);
+        }
     }
 }

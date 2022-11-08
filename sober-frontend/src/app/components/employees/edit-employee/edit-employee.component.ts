@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee.model';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -19,6 +19,7 @@ export class EditEmployeeComponent implements OnInit {
     department:''
   }
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private employeeService: EmployeesService) { }
 
@@ -32,12 +33,20 @@ export class EditEmployeeComponent implements OnInit {
           this.employeeService.getEmployee(id).subscribe({
             next: (response) => {
               this.employeeDetails = response;
-              console.log(response);
             }
           })
         }
       }
     })
+  }
+
+  updateEmployee(){
+    this.employeeService.updateEmployee(this.employeeDetails.id,
+      this.employeeDetails).subscribe({
+        next:(response) =>{
+          this.router.navigate(['employee']);
+        }
+      });
   }
 
 }
